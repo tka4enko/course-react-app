@@ -2,6 +2,7 @@ import * as React from "react";
 import './header.scss';
 import Oasis from '../../../assets/oasis.jpg'
 import {Form} from "../form";
+import {Logo} from "../core/logo";
 
 class Header extends React.Component {
 
@@ -10,9 +11,7 @@ class Header extends React.Component {
     return (
       <header className="header" style={{backgroundImage: `url(${Oasis})`}}>
         <div className="container">
-          <div className="logo">
-            netflix
-          </div>
+          <Logo/>
           <Form/>
         </div>
       </header>

@@ -9,8 +9,11 @@
     font-size: 14px;
   }
 }
-#app{
+.App{
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 a:not([class]) {
   text-decoration: underline;

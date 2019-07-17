@@ -3,7 +3,6 @@ import './button.scss';
 import classNames from 'classnames';
 
 const Button = (props) => {
-  console.log(props);
   const {title,variant,size} = {...props};
   return (
     <button className={classNames("button", {[`button-${variant ? variant : 'default'}`]:variant}, {[`${size}`]:size} )}>
