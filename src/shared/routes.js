@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route } from "react-router-dom";
-import Home from './pages/Home';
+import Home from './pages/home';
 
 class Routes extends React.Component {
 

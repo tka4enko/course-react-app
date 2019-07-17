@@ -1,0 +1,28 @@
+@import "variables";
+@mixin hook-base-body() {
+  text-rendering: geometricPrecision;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: $breakpoint-small-max) {
+    font-size: 14px;
+  }
+}
+#app{
+  overflow: hidden;
+}
+a:not([class]) {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.container{
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  z-index: 1;
+  position: relative;
+}
