@@ -1,10 +1,10 @@
-import * as React from "react";
+import React, {Component} from "react";
 import './header.scss';
-import Oasis from '../../../assets/oasis.jpg'
+import Oasis from '../../assets/oasis.jpg'
 import {Form} from "../form";
 import {Logo} from "../core/logo";
 
-class Header extends React.Component {
+class Header extends Component {
 
   render() {
     console.log(Oasis);

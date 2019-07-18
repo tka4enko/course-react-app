@@ -1,15 +1,19 @@
 import React from 'react';
-import './shared/styles/base.scss';
+import './styles/base.scss';
 import {BrowserRouter as Router} from "react-router-dom";
-import Routes from './shared/routes';
+import Routes from './routes';
+import {ErrorBoundary} from './error'
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      <ErrorBoundary>
+        <Router>
           <Routes/>
-      </Router>
+        </Router>
+      </ErrorBoundary>
     </div>
+
   );
 }
 
