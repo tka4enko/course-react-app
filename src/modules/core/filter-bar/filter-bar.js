@@ -20,7 +20,7 @@ class FilterBar extends Component {
               </div>
               <div className="filter-bar-actions">
                 <Button isActive={sort_by_date} variant={'link'} title={'Release date'} id="sort_by_date" onClick={onClickFilterButton}/>
-                <Button isActive={sort_by_rating} variant={'link'} title={'Rating'} id="sort_by_rating" onClick={onClickFilterButton}/>
+                <Button isActive={sort_by_rating} variant='link' title={'Rating'} id="sort_by_rating" onClick={onClickFilterButton}/>
               </div>
             </div>
           </div>

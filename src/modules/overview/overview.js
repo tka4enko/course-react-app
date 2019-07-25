@@ -13,6 +13,7 @@ class Overview extends Component {
           <div className="films">
           </div>
         </>
+
         {this.props.films ?
           <>
             <FilterBar onClick={this.props} />

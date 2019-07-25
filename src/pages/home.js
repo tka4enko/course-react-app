@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import {Header, Footer, Overview} from '../modules/index';
 
 class Home extends Component {
@@ -22,7 +22,7 @@ class Home extends Component {
       {
         button: {
           size: 'large',
-          title: "Search",
+          title: 'Search',
         },
         filterBar: {
           onClickFilterButton: this.handelClickFilterButton,
@@ -31,8 +31,6 @@ class Home extends Component {
         }
 
       };
-
-
     return (
       <>
         <Header/>
