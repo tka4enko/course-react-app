@@ -3,27 +3,6 @@ import './form.scss';
 import {Input,Button,RadioButton} from "../core";
 
 class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filter: '',
-      search_value:''
-    };
-   this.handleChange = this.handleChange.bind(this);
-  }
-
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-  };
-
-  handleChange(e){
-    this.setState(
-      { [e.target.name]: e.target.value }
-    );
-    console.log(this.state);
-  }
 
   render() {
     return (
@@ -31,22 +10,21 @@ class Form extends Component {
         <div className="form-label">
           Find your movie
         </div>
-        <form action="/" onSubmit={this.handleSubmit}>
+        <form action="/" onSubmit={this.props.actions.handelSubmit}>
           <div className="form-item">
-            <Input onChange={this.handleChange} id={'search_value'} name='search_value' value={this.state.search_value}/>
+            <Input onChange={this.props.actions.change} id={'search_value'} name='search_value' value={this.props.search_value}/>
           </div>
           <div className="form-bottom">
             <div className="form-bottom-col">
               <div className="label">Search by</div>
-              <RadioButton onChange={this.handleChange} id='title' title={'Title'} name='filter' value='title' isChecked={this.state.filter === 'title'}/>
-              <RadioButton onChange={this.handleChange} id='genree' title={'Genre'} name='filter' value='genree' isChecked={this.state.filter === 'genree'}/>
+              <RadioButton onChange={this.props.actions.change} id='title' title={'Title'} name='searchBy' value='title' isChecked={this.props.searchBy === 'title'}/>
+              <RadioButton onChange={this.props.actions.change} id='genres' title={'Genres'} name='searchBy' value='genres' isChecked={this.props.searchBy === 'genres'}/>
             </div>
             <div className="form-bottom-col">
               <Button variant={'primary'} size={'large'} id="search" title={'Search'}/>
             </div>
           </div>
         </form>
-
       </div>
     );
   }

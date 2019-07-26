@@ -5,14 +5,13 @@ import {Button} from "../button";
 class FilterBar extends Component {
 
   render() {
-    const {onClickFilterButton,sort_by_date,sort_by_rating} = {...this.props};
-
+    const {onClickFilterButton,sort_by_date,sort_by_rating} = this.props;
     return (
       <div className="filter-bar">
         <div className="container">
           <div className="filter-bar-block">
             <div className="filter-bar-col">
-              7 movies found
+              {this.props.films.limit} movies found
             </div>
             <div className="filter-bar-col">
               <div className="filter-bar-label">

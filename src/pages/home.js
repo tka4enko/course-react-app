@@ -4,38 +4,63 @@ import {Header, Footer, Overview} from '../modules/index';
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.handelClickFilterButton = this.handelClickFilterButton.bind(this);
     this.state = {
-      sort_by_rating: false,
-      sort_by_date: false
-    }
+      button: {
+        size: 'large',
+        title: 'Search',
+      },
+      filterBar: {
+        onClickFilterButton: this.handelClickFilterButton,
+      },
+      actions: {
+        handelSubmit: this.handleSubmit,
+        change: this.handleChange,
+        fetchRequest:this.fetchRequest
+      },
+      films: {},
+      searchBy: '',
+      search_value: ''
+    };
+    this.handelClickFilterButton = this.handelClickFilterButton.bind(this);
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.fetchRequest(`search=${this.state.search_value}&searchBy=${this.state.searchBy}`)
+  };
+
+  handleChange = (e) => {
+    this.setState(
+      {[e.target.name]: e.target.value}
+    );
+  };
 
   handelClickFilterButton(e) {
     this.setState(
-      { [e.target.id]: !this.state[e.target.id] }
+      {[e.target.id]: !this.state[e.target.id]}
     );
   }
 
-  render() {
-    const overviewData =
-      {
-        button: {
-          size: 'large',
-          title: 'Search',
-        },
-        filterBar: {
-          onClickFilterButton: this.handelClickFilterButton,
-          sort_by_rating:this.state.sort_by_rating,
-          sort_by_date:this.state.sort_by_date,
-        }
+  fetchRequest = (data) => {
+    console.log(data);
+    fetch(`https://reactjs-cdp.herokuapp.com/movies?${data}`)
+      .then(results => {
+        return results.json();
+      }).then(data => {
+      this.setState({films: data})
+    })
+  };
 
-      };
+  componentDidMount() {
+    this.fetchRequest()
+  }
+
+
+  render() {
     return (
       <>
-        <Header/>
-        <Overview {...overviewData}
-        />
+        <Header {...this.state} />
+        <Overview {...this.state}/>
         <Footer/>
       </>
     );

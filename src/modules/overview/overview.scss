@@ -1,7 +1,58 @@
-.overview{
-  .no-results{
+.overview {
+  .no-results {
     font-size: 100px;
     display: block;
     align-items: center;
+  }
+  .films {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    > * {
+      display: flex;
+      flex-direction: column;
+      width: 33.3%;
+      padding: 0 10px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #000;
+
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .card {
+      &-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      &-title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      &-release {
+        padding: 2px 5px;
+        border: 1px solid #000;
+      }
+      &-genres{
+        margin-top: 4px;
+        span{
+          display: inline-block;
+          margin-right: 5px;
+          &:not(:last-child){
+            &:after{
+              content: ',';
+            }
+          }
+        }
+      }
+    }
   }
 }

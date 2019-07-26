@@ -7,12 +7,12 @@ import {Logo} from "../core/logo";
 class Header extends Component {
 
   render() {
-    console.log(Oasis);
+    console.log(this.props);
     return (
       <header className="header" style={{backgroundImage: `url(${Oasis})`}}>
         <div className="container">
           <Logo/>
-          <Form/>
+          <Form {...this.props}/>
         </div>
       </header>
     );
