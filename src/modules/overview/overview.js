@@ -17,37 +17,44 @@ class Overview extends Component {
   };
 
   render() {
+    console.log(this.props.films);
     return (
+
       <div className={'overview'}>
         <>
           <FilterBar {...this.props} />
         </>
-        {this.props.films.data ?
-          <>
-            <div className="container">
-              <div className="films">
-                {this.props.films.data.map((item) => (
-                  <Link to={`/${item.id}`} className="card-film" key={item.id}>
-                    <div className="card-image"><img src={item.poster_path} alt=""/></div>
-                    <div className="card-head">
-                      <div className="card-title">{item.title}</div>
-                      <div className="card-release">{this.getYear(item.release_date)}</div>
-                    </div>
-                    <div className="card-geres">
-                      {item.genres.map((item, key) => (
-                        <span key={key}>{item}</span>
-                      ))}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </>
-          :
-          <div className="no-results">
-            Films not found
+
+        <>
+
+          <div className="container">
+            {this.props.error ? <h1 className={'error'}>Fetch doesn't work</h1> :
+              this.props.films.total ?
+                <div className="films">
+                  {this.props.films.data.map((item) => (
+                    <Link to={`/${item.id}`} className="card-film" key={item.id}>
+                      <div className="card-image"><img src={item.poster_path} alt=""/></div>
+                      <div className="card-head">
+                        <div className="card-title">{item.title}</div>
+                        <div className="card-release">{this.getYear(item.release_date)}</div>
+                      </div>
+                      <div className="card-genres">
+                        {item.genres.map((item, key) => (
+                          <span key={key}>{item}</span>
+                        ))}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                :
+                <div className="no-results">
+                  Films not found
+                </div>
+            }
           </div>
-        }
+
+        </>
+
       </div>
     );
   }

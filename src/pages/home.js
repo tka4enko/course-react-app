@@ -12,11 +12,6 @@ class Home extends Component {
       filterBar: {
         onClickFilterButton: this.handelClickFilterButton,
       },
-      actions: {
-        handelSubmit: this.handleSubmit,
-        change: this.handleChange,
-        fetchRequest:this.fetchRequest
-      },
       films: {},
       searchBy: '',
       search_value: ''
@@ -48,7 +43,9 @@ class Home extends Component {
         return results.json();
       }).then(data => {
       this.setState({films: data})
-    })
+    }).catch(() => {
+      this.setState({error: true})
+    });
   };
 
   componentDidMount() {
@@ -59,8 +56,8 @@ class Home extends Component {
   render() {
     return (
       <>
-        <Header {...this.state} />
-        <Overview {...this.state}/>
+        <Header {...this.state} funcSubmit={this.handleSubmit} funcChange={this.handleChange}/>
+        <Overview {...this.state} />
         <Footer/>
       </>
     );

@@ -11,7 +11,7 @@ class FilterBar extends Component {
         <div className="container">
           <div className="filter-bar-block">
             <div className="filter-bar-col">
-              {this.props.films.limit} movies found
+              {this.props.films.data ? this.props.films.data.length : 0  } movies found
             </div>
             <div className="filter-bar-col">
               <div className="filter-bar-label">
