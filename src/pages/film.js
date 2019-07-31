@@ -43,6 +43,16 @@ class Film extends Component {
       });
     return fetchParams.slice(0, -1);
   };
+  async componentDidUpdate(prevProps) {
+    console.log(this.state.film.id);
+    console.log(prevProps.match.params.id);
+    if (this.state.film.id != prevProps.match.params.id){
+      await this.fetchRequestFilm(this.props.match.params.id);
+      await this.generateParamsForFetch();
+      await this.fetchRequestFilmByGenre(`${this.generateParamsForFetch()}`);
+      this.setState({isLoading: false});
+    }
+  }
 
   async componentDidMount() {
     await this.fetchRequestFilm(this.props.match.params.id);
