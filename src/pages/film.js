@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {SingleFilm, Header, Footer, Overview} from "../modules";
 
 import {Button} from "../modules/core/button";
+import classNames from "classnames";
 
 class Film extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Film extends Component {
       page: "film",
       film: {},
       films: {},
+      isLoading:true
     };
   }
 
@@ -46,12 +48,13 @@ class Film extends Component {
     await this.fetchRequestFilm(this.props.match.params.id);
     await this.generateParamsForFetch();
     await this.fetchRequestFilmByGenre(`${this.generateParamsForFetch()}`);
+    this.setState({isLoading: false});
   }
 
   render() {
 
     return (
-      <>
+      <div className={classNames('wrapper',{['isLoading']: this.state.isLoading})}>
         <Header {...this.state}>
           <Button variant="search" href='/' title='search'/>
         </Header>
@@ -75,7 +78,7 @@ class Film extends Component {
         </div>
         {this.state.films.total ? <Overview {...this.state} /> : ''}
         <Footer/>
-      </>
+      </div>
     );
   }
 }

@@ -29,6 +29,30 @@ a:not([class]) {
   z-index: 1;
   position: relative;
 }
-.film{
-
+.wrapper{
+  &.isLoading{
+    position: relative;
+    &:before{
+      content: '';
+      background-image: url('../assets/lg.rotating-balls-spinner.gif');
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2123123;
+      width: 80px;
+      height: 80px;
+      background-size: contain;
+    }
+    &:after{
+      content: '';
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-color: rgba(255,255,255,.8);
+      z-index: 1;
+    }
+  }
 }

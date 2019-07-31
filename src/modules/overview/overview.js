@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import './overview.scss';
-import {FilterBar} from "../core";
 import {Link} from 'react-router-dom';
 
 class Overview extends Component {

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Header, Footer, Overview, Form} from '../modules/index';
 import {FilterBar} from "../modules/core/filter-bar";
+import classNames from "classnames";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page:"home",
+      page: "home",
       button: {
         size: 'large',
         title: 'Search',
@@ -16,7 +17,8 @@ class Home extends Component {
       },
       films: {},
       searchBy: '',
-      search_value: ''
+      search_value: '',
+      isLoading: true
     };
     this.handelClickFilterButton = this.handelClickFilterButton.bind(this);
   }
@@ -24,6 +26,7 @@ class Home extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.fetchRequest(`search=${this.state.search_value}&searchBy=${this.state.searchBy}`)
+    this.setState({isLoading: true});
   };
 
   handleChange = (e) => {
@@ -39,12 +42,12 @@ class Home extends Component {
   }
 
   fetchRequest = (data) => {
-    console.log(data);
     fetch(`https://reactjs-cdp.herokuapp.com/movies?${data}`)
       .then(results => {
         return results.json();
       }).then(data => {
-      this.setState({films: data})
+      this.setState({films: data});
+      this.setState({isLoading: false});
     }).catch(() => {
       this.setState({error: true})
     });
@@ -52,21 +55,20 @@ class Home extends Component {
 
   componentDidMount() {
     this.fetchRequest();
-    document.body.classList.add('home');
   }
 
 
   render() {
 
     return (
-      <>
+      <div className={classNames('wrapper', {['isLoading']: this.state.isLoading})}>
         <Header {...this.state}>
-            <Form {...this.props} funcSubmit={this.handleSubmit}  funcChange={this.handleChange}/>
+          <Form {...this.state} funcSubmit={this.handleSubmit} funcChange={this.handleChange}/>
         </Header>
         <FilterBar {...this.state} />
         <Overview {...this.state} />
         <Footer/>
-      </>
+      </div>
     );
   }
 }
