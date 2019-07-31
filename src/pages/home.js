@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import {Header, Footer, Overview} from '../modules/index';
+import {Header, Footer, Overview, Form} from '../modules/index';
+import {FilterBar} from "../modules/core/filter-bar";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      page:"home",
       button: {
         size: 'large',
         title: 'Search',
@@ -49,14 +51,19 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    this.fetchRequest()
+    this.fetchRequest();
+    document.body.classList.add('home');
   }
 
 
   render() {
+
     return (
       <>
-        <Header {...this.state} funcSubmit={this.handleSubmit} funcChange={this.handleChange}/>
+        <Header {...this.state}>
+            <Form {...this.props} funcSubmit={this.handleSubmit}  funcChange={this.handleChange}/>
+        </Header>
+        <FilterBar {...this.state} />
         <Overview {...this.state} />
         <Footer/>
       </>

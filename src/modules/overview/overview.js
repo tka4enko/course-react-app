@@ -22,17 +22,12 @@ class Overview extends Component {
 
       <div className={'overview'}>
         <>
-          <FilterBar {...this.props} />
-        </>
-
-        <>
-
           <div className="container">
             {this.props.error ? <h1 className={'error'}>Fetch doesn't work</h1> :
               this.props.films.total ?
                 <div className="films">
                   {this.props.films.data.map((item) => (
-                    <Link to={`/${item.id}`} className="card-film" key={item.id}>
+                    <Link to={`/film/${item.id}`} className="card-film" key={item.id}>
                       <div className="card-image"><img src={item.poster_path} alt=""/></div>
                       <div className="card-head">
                         <div className="card-title">{item.title}</div>

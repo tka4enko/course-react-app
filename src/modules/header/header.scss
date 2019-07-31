@@ -12,4 +12,10 @@
     bottom: 0;
     z-index: 0;
   }
+  &-wrap{
+    &.film{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }

@@ -1,4 +1,7 @@
-.input{
+.form{
+  margin-top: 40px;
+}
+.input {
   width: 100%;
   background-color: #000;
   color: #fff;
@@ -11,9 +14,10 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.radio{
-  display:none;
-  &-toolbar.active label{
+
+.radio {
+  display: none;
+  &-toolbar.active label {
     background-color: tomato;
     color: #fff;
   }

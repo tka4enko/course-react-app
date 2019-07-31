@@ -31,6 +31,11 @@
         color: tomato;
       }
     }
+    &-search{
+      text-decoration: none;
+      color: #000;
+      font-size: 16px;
+    }
     &-primary{
       color: #fff;
       background-color: tomato;
@@ -49,4 +54,5 @@
   &:hover{
     background-color: darken(#fff,20%);
   }
+
 }
