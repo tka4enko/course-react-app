@@ -17,7 +17,7 @@ class Home extends Component {
       },
       films: {},
       searchBy: '',
-      search_value: '',
+      searchValue: '',
       isLoading: true
     };
     this.handelClickFilterButton = this.handelClickFilterButton.bind(this);
@@ -25,8 +25,10 @@ class Home extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.fetchRequest(`search=${this.state.search_value}&searchBy=${this.state.searchBy}`)
-    this.setState({isLoading: true});
+    if (this.state.searchValue && this.state.searchBy){
+      this.fetchRequest(`search=${this.state.searchValue}&searchBy=${this.state.searchBy}`);
+      this.setState({isLoading: true});
+    };
   };
 
   handleChange = (e) => {

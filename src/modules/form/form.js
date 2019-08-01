@@ -12,7 +12,7 @@ class Form extends Component {
         </div>
         <form action="/" onSubmit={this.props.funcSubmit}>
           <div className="form-item">
-            <Input onChange={this.props.funcChange} id={'search_value'} name='search_value' value={this.props.search_value}/>
+            <Input onChange={this.props.funcChange} id={'searchValue'} name='searchValue' value={this.props.search_value}/>
           </div>
           <div className="form-bottom">
             <div className="form-bottom-col">

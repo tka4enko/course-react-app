@@ -5,7 +5,7 @@ import {Button} from "../button";
 class FilterBar extends Component {
 
   render() {
-    const {onClickFilterButton,sort_by_date,sort_by_rating} = this.props;
+    const {onClickFilterButton,sortBbyDate,sortByRating} = this.props;
     return (
       <div className="filter-bar">
         <div className="container">
@@ -18,8 +18,8 @@ class FilterBar extends Component {
                 Sort by:
               </div>
               <div className="filter-bar-actions">
-                <Button isActive={sort_by_date} variant={'link'} title={'Release date'} id="sort_by_date" onClick={onClickFilterButton}/>
-                <Button isActive={sort_by_rating} variant='link' title={'Rating'} id="sort_by_rating" onClick={onClickFilterButton}/>
+                <Button isActive={sortBbyDate} variant={'link'} title={'Release date'} id="sortBbyDate" onClick={onClickFilterButton}/>
+                <Button isActive={sortByRating} variant='link' title={'Rating'} id="sortByRating" onClick={onClickFilterButton}/>
               </div>
             </div>
           </div>

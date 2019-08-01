@@ -44,9 +44,12 @@ class Film extends Component {
     return fetchParams.slice(0, -1);
   };
   async componentDidUpdate(prevProps) {
-    console.log(this.state.film.id);
+    console.log(this.props.match.params.id);
     console.log(prevProps.match.params.id);
-    if (this.state.film.id != prevProps.match.params.id){
+    console.log(this.state);
+    // this.setState({isLoading: true});
+    if (this.props.match.params.id !== prevProps.match.params.id){
+      this.setState({isLoading: true});
       await this.fetchRequestFilm(this.props.match.params.id);
       await this.generateParamsForFetch();
       await this.fetchRequestFilmByGenre(`${this.generateParamsForFetch()}`);

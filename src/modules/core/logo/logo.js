@@ -1,11 +1,12 @@
 import React from "react";
 import './logo.scss'
+import {Link} from 'react-router-dom';
 
-const Logo = (props) => {
+const Logo = () => {
   return (
-    <div className={'logo'}>
+    <Link to={'/'}className={'logo'}>
       netflix
-    </div>
+    </Link>
   );
 };
 
