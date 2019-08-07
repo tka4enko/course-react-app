@@ -2,6 +2,8 @@ import React from "react";
 import './button.scss';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
+import PropTypes from "prop-types";
+import {Header} from "../../header";
 
 const Button = (props) => {
   const {title, variant, size, onClick, id, isActive, href} = props;
@@ -24,3 +26,13 @@ const Button = (props) => {
 };
 
 export {Button};
+
+Button.propTypes = {
+  variant: PropTypes.string,
+  title: PropTypes.string,
+  size: PropTypes.string,
+  id: PropTypes.number,
+  isActive: PropTypes.bool,
+  href: PropTypes.string,
+  onClick: PropTypes.func
+};

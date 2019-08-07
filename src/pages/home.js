@@ -7,7 +7,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "home",
+      page: 'home',
       button: {
         size: 'large',
         title: 'Search',
@@ -41,6 +41,7 @@ class Home extends Component {
     this.setState(
       {[e.target.id]: !this.state[e.target.id]}
     );
+    console.log(this.state);
   }
 
   fetchRequest = (data) => {
@@ -58,6 +59,7 @@ class Home extends Component {
   componentDidMount() {
     this.fetchRequest();
   }
+
 
 
   render() {

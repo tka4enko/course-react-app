@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import './filter-bar.scss';
 import {Button} from "../button";
-
+import PropTypes from 'prop-types';
+import {Header} from "../../header";
 class FilterBar extends Component {
 
   render() {
@@ -30,3 +31,10 @@ class FilterBar extends Component {
 }
 
 export {FilterBar};
+
+
+FilterBar.propTypes = {
+  onClickFilterButton: PropTypes.func,
+  sortBbyDate: PropTypes.bool,
+  sortByRating: PropTypes.bool
+};

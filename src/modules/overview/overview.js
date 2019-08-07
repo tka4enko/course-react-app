@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './overview.scss';
 import {Link} from 'react-router-dom';
+import PropTypes from "prop-types";
 
 class Overview extends Component {
   constructor(props) {
@@ -16,16 +17,16 @@ class Overview extends Component {
   };
 
   render() {
-    console.log(this.props.films);
+    const {films} = this.props;
     return (
 
       <div className={'overview'}>
         <>
           <div className="container">
             {this.props.error ? <h1 className={'error'}>Fetch doesn't work</h1> :
-              this.props.films.total ?
+              films.total ?
                 <div className="films">
-                  {this.props.films.data.map((item) => (
+                  {films.data.map((item) => (
                     <Link to={`/film/${item.id}`} className="card-film" key={item.id}>
                       <div className="card-image"><img src={item.poster_path} alt=""/></div>
                       <div className="card-head">
@@ -46,12 +47,16 @@ class Overview extends Component {
                 </div>
             }
           </div>
-
         </>
-
       </div>
     );
   }
 }
 
 export {Overview};
+
+Overview.propTypes = {
+  backgroundImage: PropTypes.string,
+  error: PropTypes.bool,
+  films: PropTypes.object
+};

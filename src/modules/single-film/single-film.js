@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './single-film.scss';
+import PropTypes from "prop-types";
 
 class SingleFilm extends Component {
   getYear = (date) => {
@@ -8,34 +9,34 @@ class SingleFilm extends Component {
       item.getFullYear()
     )
   };
-
   render() {
-    console.log(this.props);
+    const {film} = this.props;
+    const {poster_path, title, tagline, release_date, runtime, overview} = this.props.film;
     return (
       <section className={'section-single-film'}>
         <div className="container">
-          {this.props.film ?
+          {film ?
             <div className={'section-body'}>
               <div className="section-image">
-                <img src={this.props.film.poster_path} alt=""/>
+                <img src={poster_path} alt=""/>
               </div>
               <div className="section-content">
                 <div className="section-title">
-                  {this.props.film.title}
+                  {title}
                 </div>
                 <div className="section-subtitle">
-                  {this.props.film.tagline}
+                  {tagline}
                 </div>
                 <div className="section-info">
                   <div className="section-date">
-                    {this.getYear(this.props.film.release_date)}
+                    {this.getYear(release_date)}
                   </div>
                   <div className="section-time">
-                    {this.props.film.runtime} min
+                    {runtime} min
                   </div>
                 </div>
                 <div className="section-data">
-                  {this.props.film.overview}
+                  {overview}
                 </div>
               </div>
             </div>
@@ -46,5 +47,15 @@ class SingleFilm extends Component {
     );
   }
 }
+SingleFilm.propTypes = {
+  film: PropTypes.object,
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+  tagline: PropTypes.string,
+  release_date: PropTypes.string,
+  runtime: PropTypes.string,
+  overview: PropTypes.string,
+};
 
 export {SingleFilm};
+
